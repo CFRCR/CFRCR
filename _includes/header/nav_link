@@ -1,0 +1,9 @@
+<!--<a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect{% if page.url == "/" %} active{% endif %}" href="/">Home</a>
+<a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect{% if page.url == "/about/" %} active{% endif %}" href="/about/">About</a>
+<a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect{% if page.url contains "/portfolio/" %} active{% endif %}" href="/portfolio/">Portfolio</a>
+<a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect{% if page.url contains "/blog/" %} active{% endif %}" href="/blog/">Blog</a>
+-->
+<a class="mdl-navigation__link mdl-js-button mdl-js-ripple-effect {% comment %}
+{% endcomment %}{% if include.item.current_if_is %}{% if page.url == include.item.current_if_is %} active{% endif %}{% endif %}{% comment %}
+{% endcomment %}{% if include.item.current_if_contains %}{% endif %}{% if page.url contains include.item.current_if_contains %} active{% endif %}{% comment %}
+{% endcomment %}" href="{{ include.item.url }}">{{ include.item.text }}</a>

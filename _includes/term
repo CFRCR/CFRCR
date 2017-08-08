@@ -1,0 +1,14 @@
+{%- assign found = false -%}
+{%- for term in site.glossary -%}
+  {%- assign tname = term.name | downcase -%}
+  {%- assign iname = include.text | downcase -%}
+
+  {%- if tname == iname -%}
+    {%- assign found = true -%}
+    <a href="{{ term.url }}" title="{{ term.tooltip }}" style="font-weight:bold">
+      {{- include.text -}}
+    </a>
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if found == false -%}{{- include.text -}}{%- endif -%}

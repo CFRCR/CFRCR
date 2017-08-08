@@ -1,0 +1,11 @@
+---
+layout: default
+permalink: /resources/
+---
+<h1>Resource Collections</h1>
+
+<ul>
+  {% for collection in site.rsrc_indices %}
+    <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+  {% endfor %}
+</ul>

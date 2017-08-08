@@ -1,0 +1,14 @@
+/*Remove blue (in chrome) highlight arond components*/
+html:focus {outline:0;}
+
+/*MDL hides components based on screen size in javascript, leaving them visible until it executes. This hides them on page load*/
+@media screen and (min-width: 1025px) {
+  .mdl-layout--small-screen-only {
+    display:none;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .mdl-layout--large-screen-only {
+    display:none;
+  }
+}

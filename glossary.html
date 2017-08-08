@@ -1,0 +1,13 @@
+---
+permalink: /glossary/
+---
+{% assign alphabet = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z" | split: "," %}
+{% for letter in alphabet %}
+  <h1>{{ letter }}</h1>
+  <ul>
+    {% for term in site.glossary %}
+      {% assign first = term.name | downcase | slice: 0 %}
+      {% if first == letter %}<li><a href="{{ term.url }}">{{ term.name }}</a></li>{% endif %}
+    {% endfor %}
+  </ul>
+{% endfor %}
