@@ -4,8 +4,8 @@ mobile_title: CFRCR
 
 
 
-#Site config
-main_menu: #A list of the menu items for the top of the page
+#Site setup
+main_menu:
   -
     text: Home
     url: /
@@ -26,11 +26,9 @@ main_menu: #A list of the menu items for the top of the page
 collections: #A list of all custom jekyll collections aand their variables
   glossary: #Useful terms
     output: true
-  rsrc_indices:
+  resource_collections: #Collections of different kinds of resources
     output: true
-  rsrc-git_basics-cli:
-    output: true
-  rsrc-contributing_to_cfrcr:
+  resource_docs: #Resource documents that can be used in collections or viewed individually
     output: true
 
 defaults: #Default values for page variables
@@ -46,27 +44,19 @@ defaults: #Default values for page variables
     values:
       layout: "term"
       permalink: /:collection/:path/
-  - #Resources indices
+  - #Collection of resources
     scope:
       path: ""
-      type: rsrc_indices
+      type: resource_collections
     values:
-      layout: "resource_index"
-      permalink: /resources/:path/
-  -
+      layout: resource_collection
+      permalink: /resources/collections/:path/
+  - #Resource documents
     scope:
       path: ""
-      type: rsrc-git_basics-cli
+      type: resource_docs
     values:
-      permalink: /resources/git_basics-cli/:path/
-      layout: resource
-  -
-    scope:
-      path: ""
-      type: rsrc-contributing_to_cfrcr
-    values:
-      permalink: /resources/contributing_to_cfrcr/:path/
-      layout: resource
+      permalink: /resources/docs/:path/
 
 
 

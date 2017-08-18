@@ -1,0 +1,28 @@
+---
+layout: base
+---
+<h1>{{ page.title }}</h1>
+{{ content }}
+
+{% for resource in page.resources %}
+  <hr>
+
+  {% if resource.type == "doc" %}
+    {% assign doc_path = "_resource_docs/" | append: resource.path %}
+    {% assign doc = site.resource_docs | where: "path", doc_path | first %}
+    <h3>{% if resource.title %}{{ resource.title }}{% else %}{{ doc.title }}{% endif %}</h3>
+    {{ doc.content }}
+  {% endif %}
+
+  {% if resource.type == "term" %}
+    {% assign term = site.glossary | where: "name", resource.term | first %}
+    <h3>{% if resource.title %}{{ resource.title }}{% else %}{{ term.name }}{% endif %}</h3>
+    {{ term.content }}
+  {% endif %}
+
+  {% if resource.type == "youtube" %}
+    <h3>{{ resource.title }}</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ resource.id }}" frameborder="0" allowfullscreen></iframe>
+  {% endif %}
+
+{% endfor %}

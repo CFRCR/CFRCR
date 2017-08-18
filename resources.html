@@ -1,12 +1,16 @@
 ---
-title: Resources
-layout: default
 permalink: /resources/
 ---
-<h1>{{ page.title }}</h1>
-
+<h1>Collections</h1>
 <ul>
-  {% for collection in site.rsrc_indices %}
-    <li><a href="{{ collection.url }}">{{ collection.title }}</a></li>
+  {% for collection in site.resource_collections %}
+    <li><a href="{{ collection.url }}"><h6>{{ collection.title }}</h6></a></li>
+  {% endfor %}
+</ul>
+
+<h1>Documents</h1>
+<ul>
+  {% for document in site.resource_docs %}
+    <li><a href="{{ document.url }}"><h6>{{ document.title }}</h6>{{ document.path | remove_first: "_resource_docs/" | remove: ".md" }}</a></li>
   {% endfor %}
 </ul>

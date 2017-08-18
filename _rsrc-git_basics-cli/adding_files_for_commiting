@@ -1,6 +1,0 @@
----
-title: Adding Files to Commit
-order: 3
----
-Generally just do "git add *".
-
