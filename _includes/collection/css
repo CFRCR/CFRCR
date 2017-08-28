@@ -1,0 +1,3 @@
+#collection_nav > .mdl-layout__header-row, #collection_nav > .mdl-layout__tab-bar-container > .mdl-layout__tab-bar-button, #collection_nav > .mdl-layout__tab-bar-container > .mdl-layout__tab-bar {
+  background-color: white;
+}

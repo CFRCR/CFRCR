@@ -15,20 +15,24 @@ main_menu:
     url: /about/
     current_if_is: /about/
   -
+    text: Collections
+    url: /collections/
+    current_if_contains: /collections/
+  -
+    text: Documents
+    url: /documents/
+    current_if_contains: /documents/
+  -
     text: Glossary
     url: /glossary/
     current_if_contains: /glossary/ #The url of the page has to contain "/glossary/" for the Glossary link to be darkened
-  -
-    text: Resources
-    url: /resources/
-    current_if_contains: /resources/
 
 collections: #A list of all custom jekyll collections aand their variables
+  collections: #Collections of different kinds of resources
+    output: true
+  documents: #Resource documents that can be used in collections or viewed individually
+    output: true
   glossary: #Useful terms
-    output: true
-  resource_collections: #Collections of different kinds of resources
-    output: true
-  resource_docs: #Resource documents that can be used in collections or viewed individually
     output: true
 
 defaults: #Default values for page variables
@@ -37,6 +41,19 @@ defaults: #Default values for page variables
       path: "" # an empty string here means all files in the project
     values:
       layout: "default"
+  - #Collection of resources
+    scope:
+      path: ""
+      type: collections
+    values:
+      layout: collection
+      permalink: /collections/:path/
+  - #Resource documents
+    scope:
+      path: ""
+      type: documents
+    values:
+      permalink: /documents/:path/
   - #Terms in the glossary
     scope:
       path: ""
@@ -44,19 +61,6 @@ defaults: #Default values for page variables
     values:
       layout: "term"
       permalink: /:collection/:path/
-  - #Collection of resources
-    scope:
-      path: ""
-      type: resource_collections
-    values:
-      layout: resource_collection
-      permalink: /resources/collections/:path/
-  - #Resource documents
-    scope:
-      path: ""
-      type: resource_docs
-    values:
-      permalink: /resources/docs/:path/
 
 
 

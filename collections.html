@@ -1,0 +1,8 @@
+---
+permalink: /collections/
+---
+<ul>
+  {% for collection in site.collections %}
+    <li><a href="{{ collection.url }}"><h6>{{ collection.title }}</h6></a></li>
+  {% endfor %}
+</ul>

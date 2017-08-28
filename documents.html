@@ -1,0 +1,8 @@
+---
+permalink: /documents/
+---
+<ul>
+  {% for document in site.documents %}
+    <li><a href="{{ document.url }}"><h6>{{ document.title }}</h6>{{ document.path | remove_first: "_resource_docs/" | remove: ".md" }}</a></li>
+  {% endfor %}
+</ul>
