@@ -1,3 +1,13 @@
-#collection_nav > .mdl-layout__header-row, #collection_nav > .mdl-layout__tab-bar-container > .mdl-layout__tab-bar-button, #collection_nav > .mdl-layout__tab-bar-container > .mdl-layout__tab-bar {
+#collection_nav > .mdl-layout__header-row {
+  padding-left: 15px;
   background-color: white;
+}
+
+#collection_nav > .mdl-layout__header-row > #back_button {
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+#collection_nav > .mdl-layout__drawer-button {
+  display: none;
 }

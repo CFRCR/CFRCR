@@ -1,57 +1,23 @@
 ---
 layout: base
 ---
-<!-- Simple header with scrollable tabs. -->
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+<!-- The drawer is always open in large screens. The header is always shown,
+  even in small screens. -->
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
+            mdl-layout--fixed-header">
   <header id="collection_nav" class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <!-- Title -->
-      <span class="mdl-layout-title">{{ page.title }}</span>
-    </div>
-    <!-- Tabs -->
-    <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
-      {%- for resource in page.resources -%}
-        <a class="mdl-layout__tab{% if forloop.first %} is-active{% endif %}" href="#{{ resource.title | slugify }}">{{ resource.title }}</a>
-      {%- endfor -%}
-    </div>
-  </header>
-  <main class="mdl-layout__content">
-    {%- for resource in page.resources -%}
-      <section class="mdl-layout__tab-panel{% if forloop.first %} is-active{% endif %}" id="{{ resource.title | slugify }}">
-        <h1>{{ resource.title }}</h1>
-
-        {% if resource.type == "doc" %}
-          {% assign doc_path = "_documents/" | append: resource.path %}
-          {% assign doc = site.documents | where: "path", doc_path | first %}
-          {{ doc.content }}
-        {% endif %}
-
-        {% if resource.type == "term" %}
-          {% assign term = site.glossary | where: "name", resource.term | first %}
-          {{ term.content }}
-        {% endif %}
-
-        {% if resource.type == "youtube" %}
-          <iframe width="100vw" height="56.2vw" src="https://www.youtube.com/embed/{{ resource.id }}" frameborder="0" allowfullscreen></iframe>
-        {% endif %}
-
-      </section>
-    {%- endfor -%}
-  </main>
-</div>
-
-{% comment %}
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
-  <header class="mdl-layout__header" style="background-color: white;">
     <div class="mdl-layout__header-row">
       <span class="mdl-layout-title">{{ page.title }}</span>
       <div class="mdl-layout-spacer"></div>
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" style="margin-right: 15px;">
+      {% comment %}
+      These are for navigation if we hide the divs:
+      <button id="back_button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
         <i class="material-icons">arrow_back</i>
       </button>
       <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
         <i class="material-icons">arrow_forward</i>
       </button>
+      {% endcomment %}
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -62,52 +28,11 @@ layout: base
     </nav>
   </div>
   <main class="mdl-layout__content">
-    <div class="page-content"><!-- Your content goes here --></div>
+    {%- for resource in page.resources -%}
+      <div id="{{ resource.title | slugify}}" style="max-width: 100%;">
+        {% include collection/content resource=resource %}
+      </div>
+      {% if forloop.last != true %}<hr>{% endif %}
+    {%- endfor -%}
   </main>
 </div>
-{% endcomment %}
-
-{% comment %}
-<div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer">
-  <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">{{ page.title }}</span>
-    <nav class="mdl-navigation">
-      <!--<a class="mdl-navigation__link" href="">Link</a>-->
-      {%- for resource in page.resources -%}
-        <a class="mdl-navigation__link" href="#{{ resource.title | slugify}}">{{ resource.title }}</a>
-      {%- endfor -%}
-    </nav>
-  </div>
-  <main class="mdl-layout__content">
-    <div class="page-content"><!-- Your content goes here --></div>
-  </main>
-</div>
-{% endcomment %}
-
-{% comment %}
-<h1>{{ page.title }}</h1>
-{{ content }}
-
-{% for resource in page.resources %}
-  <hr>
-
-  {% if resource.type == "doc" %}
-    {% assign doc_path = "_resource_docs/" | append: resource.path %}
-    {% assign doc = site.resource_docs | where: "path", doc_path | first %}
-    <h3>{% if resource.title %}{{ resource.title }}{% else %}{{ doc.title }}{% endif %}</h3>
-    {{ doc.content }}
-  {% endif %}
-
-  {% if resource.type == "term" %}
-    {% assign term = site.glossary | where: "name", resource.term | first %}
-    <h3>{% if resource.title %}{{ resource.title }}{% else %}{{ term.name }}{% endif %}</h3>
-    {{ term.content }}
-  {% endif %}
-
-  {% if resource.type == "youtube" %}
-    <h3>{{ resource.title }}</h3>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/{{ resource.id }}" frameborder="0" allowfullscreen></iframe>
-  {% endif %}
-
-{% endfor %}
-{% endcomment %}
