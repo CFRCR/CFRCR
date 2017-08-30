@@ -1,13 +1,32 @@
 ---
 permalink: /glossary/
 ---
-{% assign alphabet = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z" | split: "," %}
-{% for letter in alphabet %}
-  <h1>{{ letter }}</h1>
-  <ul>
-    {% for term in site.glossary %}
-      {% assign first = term.name | downcase | slice: 0 %}
-      {% if first == letter %}<li><a href="{{ term.url }}">{{ term.name }}</a></li>{% endif %}
-    {% endfor %}
-  </ul>
-{% endfor %}
+{%- assign alphabet = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z" | split: "," -%}
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+  <div class="mdl-tabs__tab-bar" style="flex-wrap: wrap; height: auto;">
+    <a href="#all" class="mdl-tabs__tab is-active" style="padding: 0 12px;">ALL</a>
+    {%- for letter in alphabet -%}
+      <a href="#{{ letter }}" class="mdl-tabs__tab" style="padding: 0 12px;">{{ letter }}</a>
+    {%- endfor -%}
+  </div>
+
+  <div class="mdl-tabs__panel is-active" id="all">
+    <ul>
+      {%- for term in site.glossary -%}
+        <li><a href="{{ term.url }}">{{ term.name }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+
+  {%- for letter in alphabet -%}
+    <div class="mdl-tabs__panel" id="{{ letter }}">
+      <ul>
+        {%- for term in site.glossary -%}
+          {%- assign first = term.name | downcase | slice: 0 -%}
+          {%- if first == letter %}<li><a href="{{ term.url }}">{{ term.name }}</a></li>{% endif -%}
+        {%- endfor -%}
+      </ul>
+    </div>
+  {%- endfor -%}
+</div>
+
