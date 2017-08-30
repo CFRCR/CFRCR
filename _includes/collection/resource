@@ -1,0 +1,6 @@
+{%- assign type = include.resource.type -%}
+{%- if type == "document" %}{% include collection/type/document resource=include.resource -%}
+{%- elsif type == "term" %}{% include collection/type/term resource=include.resource -%}
+{%- elsif type == "youtube" %}{% include collection/type/youtube resource=include.resource -%}
+{%- elsif type == "custom" %}{% include collection/type/custom resource=include.resource -%}
+{%- else %}{% include error text="resource type not found" %}{% endif -%}

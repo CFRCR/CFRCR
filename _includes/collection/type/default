@@ -1,0 +1,4 @@
+<div style="padding: 0 30px 15px 30px;">
+  <h3>{{ include.title }}</h3>
+{{ include.content }}
+</div>

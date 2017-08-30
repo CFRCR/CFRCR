@@ -30,9 +30,9 @@ layout: base
   <main class="mdl-layout__content">
     {%- for resource in page.resources -%}
       <div id="{{ resource.title | slugify}}" style="max-width: 100%;">
-        {% include collection/content resource=resource %}
+        {%- include collection/resource resource=resource -%}
       </div>
-      {% if forloop.last != true %}<hr>{% endif %}
+      {%- if forloop.last != true %}<hr>{% endif -%}
     {%- endfor -%}
   </main>
 </div>
