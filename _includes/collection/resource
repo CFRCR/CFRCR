@@ -3,7 +3,6 @@ resource!
 {{ include.resource.title }}
 {{ include.resource.term }}
 {%- assign type = include.resource.type -%}
-{{ type }}
 {%- if type == "document" %}{% include collection/type/document resource=include.resource -%}
 {%- elsif type == "term" %}{% include collection/type/term resource=include.resource -%}
 {%- elsif type == "youtube" %}{% include collection/type/youtube resource=include.resource -%}
