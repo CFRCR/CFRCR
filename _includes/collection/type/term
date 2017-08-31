@@ -1,7 +1,11 @@
 {%- assign resource = include.resource -%}
 
+ term:
+{{ resource.title }}
+
 {%- capture content -%}
 {%- assign term = site.glossary | where: "name", resource.term | first -%}
+{% unless term %}{% include error text="term not found" %}{% endunless %}
 {{- term.content -}}
 {%- endcapture -%}
 {%- include collection/type/default title=resource.title content=content -%}

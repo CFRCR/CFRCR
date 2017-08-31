@@ -19,7 +19,11 @@ resources:
 -
   title: Video!!!
   type: youtube
-  id: IZ2CXISAxoU
+  id: EMiNmJW7enI
+  companion:
+    title: What is Git?
+    type: term
+    term: git
 -
   title: Non-existant type
   type: none

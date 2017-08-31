@@ -1,6 +1,10 @@
 {%- assign resource = include.resource -%}
 
 {%- capture content -%}
-<iframe width="640" height="360" src="https://www.youtube.com/embed/{{ resource.id }}" frameborder="0" allowfullscreen style="width: 640px; height: 360px;"></iframe>
+<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+  <iframe src="https://www.youtube.com/embed/{{ resource.id }}" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+</div>
 {%- endcapture -%}
 {%- include collection/type/default title=resource.title content=content -%}
+
+{% if resource.companion %}{% include collection/resource resource=resource.companion %}{% endif %}
