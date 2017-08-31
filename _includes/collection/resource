@@ -1,6 +1,7 @@
 resource!
 {{ include.resource.type }}
 {{ include.resource.title }}
+{{ include.resource.term }}
 {%- assign type = include.resource.type -%}
 {{ type }}
 {%- if type == "document" %}{% include collection/type/document resource=include.resource -%}
