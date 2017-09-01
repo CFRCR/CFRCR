@@ -45,7 +45,7 @@ This is how you would add custom resources to the thing. You know, the thing sto
 
 {% highlight liquid linenos %}{% raw %}
 {% if this == that %}
-
+  {%- assign what = who -%}
 {% endif %}
 {% endraw %}{% endhighlight %}
 
