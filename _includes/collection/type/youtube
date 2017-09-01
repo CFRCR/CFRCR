@@ -1,10 +1,34 @@
-{%- assign resource = include.resource -%}
+{% comment %}<h3 style="padding: 0 30px;">{{ include.resource.title }}</h3>
 
-{%- capture content -%}
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
-  <iframe src="https://www.youtube.com/embed/{{ resource.id }}" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
-</div>
-{%- endcapture -%}
-{%- include collection/type/default title=resource.title content=content -%}
+<div class="mdl-grid mdl-grid--no-spacing">
+  <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+    <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+      <iframe src="https://www.youtube.com/embed/{{ include.resource.id }}" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+    </div>
+  </div>
+  <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+    {% include collection/resource resource=include.resource.companion %}
+  </div>
+</div>{% endcomment%}
 
-{% if resource.companion %}{% include collection/resource resource=resource.companion %}{% endif %}
+{% unless include.resource.companion %}
+  {%- capture content -%}
+  <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+    <iframe src="https://www.youtube.com/embed/{{ include.resource.id }}" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+  </div>
+  {%- endcapture -%}
+{% else %}
+  {%- capture content -%}
+  <div class="mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+      <div style="position: relative; width: 100%; height: 0; padding-bottom: 56.25%;">
+        <iframe src="https://www.youtube.com/embed/{{ include.resource.id }}" frameborder="0" allowfullscreen style="position: absolute; width: 100%; height: 100%; left: 0; top: 0;"></iframe>
+      </div>
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+      {% include collection/resource resource=include.resource.companion %}
+    </div>
+  </div>
+  {%- endcapture -%}
+{% endunless %}
+{%- include collection/type/default title=include.resource.title content=content -%}

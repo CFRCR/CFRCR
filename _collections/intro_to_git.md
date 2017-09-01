@@ -21,9 +21,8 @@ resources:
   type: youtube
   id: EMiNmJW7enI
   companion:
-    title: What is Git?
-    type: term
-    term: git
+    title: Video Companion Resource
+    type: custom
 -
   title: Non-existant type
   type: none
@@ -49,3 +48,8 @@ This is how you would add custom resources to the thing. You know, the thing sto
 
 {% endif %}
 {% endraw %}{% endhighlight %}
+
+
+
+{% include collection/custom_begin title="Video Companion Resource" %}
+You can specify any type of resource to be a companion to a video. This one is custom but it could be anything!

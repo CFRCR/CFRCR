@@ -1,7 +1,5 @@
-{%- assign resource = include.resource -%}
-
 {%- capture content -%}
-{%- assign id = resource.title | slugify -%}
+{%- assign id = include.resource.title | slugify -%}
 {%- assign sections = page.content | split: "<p>wDynl1Nq3YPJjhEXfK7M" -%}
 
 {%- for section in sections -%}
@@ -9,4 +7,4 @@
   {%- if parts[0] == id %}{{ parts[1] }}{% endif -%}
 {%- endfor -%}
 {%- endcapture -%}
-{%- include collection/type/default title=resource.title content=content -%}
+{%- include collection/type/default title=include.resource.title content=content -%}

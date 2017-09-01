@@ -1,10 +1,8 @@
-{%- assign resource = include.resource -%}
-
 {%- capture content -%}
-{%- assign doc_path = "_documents/" | append: resource.path -%}
+{%- assign doc_path = "_documents/" | append: include.resource.path -%}
 {%- assign doc = site.documents | where: "path", doc_path | first -%}
 {%- if doc -%}
   {{- doc.content -}}
 {%- else %}{% include error text="document not found" %}{% endif -%}
 {%- endcapture -%}
-{%- include collection/type/default title=resource.title content=content -%}
+{%- include collection/type/default title=include.resource.title content=content -%}
