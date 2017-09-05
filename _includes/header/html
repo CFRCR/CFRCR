@@ -10,6 +10,17 @@
         {% include header/nav_link item=item %}
       {%- endfor %}
     </nav>
+    <form action="/search/">
+			<div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" style="color: white;"">
+				<label class="mdl-button mdl-js-button mdl-button--icon" for="site-search">
+						<i class="material-icons">search</i>
+					</label>
+					<div class="mdl-textfield__expandable-holder">
+						<input class="mdl-textfield__input" type="text" id="header-search" name="text" />
+						<label class="mdl-textfield__label" for="site-search">Search</label>
+					</div>
+				</div>
+		</form>
   </div>
 </header>
 <div class="mdl-layout__drawer mdl-layout--small-screen-only">

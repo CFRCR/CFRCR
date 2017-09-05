@@ -1,4 +1,5 @@
 ---
+title: Home
 ---
 Khantent, Yarrrr (like a pirate)!!
 
