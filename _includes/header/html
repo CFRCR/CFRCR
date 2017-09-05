@@ -17,7 +17,7 @@
 					</label>
 					<div class="mdl-textfield__expandable-holder">
 						<input class="mdl-textfield__input" type="text" id="header-search" name="text" />
-						<label class="mdl-textfield__label" for="site-search">Search</label>
+						<label class="mdl-textfield__label" for="header-search">Search</label>
 					</div>
 				</div>
 		</form>
