@@ -24,6 +24,10 @@ resources:
     title: Video Companion Resource
     type: custom
 -
+  title: Collectionception
+  type: collection
+  path: improving_cfrcr.md
+-
   title: Non-existant type
   type: none
 -

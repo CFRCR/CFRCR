@@ -1,0 +1,8 @@
+{%- capture content -%}
+{%- assign col_path = "_collections/" | append: include.resource.path -%}
+{%- assign col = site.collections | where: "path", col_path | first -%}
+{%- if col -%}
+  <a href="{{ col.url }}"><h1>{{ col.title }}</h1></a>
+{%- else %}{% include error text="collection not found" %}{% endif -%}
+{%- endcapture -%}
+{%- include collection/type/default content=content -%}

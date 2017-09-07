@@ -62,6 +62,11 @@ defaults: #Default values for page variables
       layout: "term"
       permalink: /:collection/:path/
 
+plugins:
+  - algoliasearch-jekyll
+algolia:
+  application_id: 'XNTLRPVD7E'
+  index_name:     'CFRCR'
 
 
 # Build settings
