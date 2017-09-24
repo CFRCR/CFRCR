@@ -69,6 +69,7 @@ algolia:
   index_name:     'CFRCR'
 
 
+
 # Build settings
 exclude:
   - Gemfile

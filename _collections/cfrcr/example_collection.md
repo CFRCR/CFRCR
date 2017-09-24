@@ -1,5 +1,6 @@
 ---
-title: Introduction to Git
+title: Example Collection
+description: An example collection.
 resources:
 -
   title: Collection Specific Content
