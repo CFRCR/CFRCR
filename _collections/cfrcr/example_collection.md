@@ -27,7 +27,7 @@ resources:
 -
   title: Collectionception
   type: collection
-  path: improving_cfrcr.md
+  path: index.md
 -
   title: Non-existant type
   type: none
