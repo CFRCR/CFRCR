@@ -1,0 +1,2 @@
+<button class="accordion">{{ include.button }}</button>
+<div class="panel">

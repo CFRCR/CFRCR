@@ -20,6 +20,7 @@
     {% include site_css/syntax %}
     {% include header/css %}
     {% include collection/css %}
+    {% include accordion/css %}
   </style>
 
   <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
@@ -40,6 +41,10 @@
 
   </div>
 
+
+  <script>
+    {% include accordion/js %}
+  </script>
 </body>
 
 </html>

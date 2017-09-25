@@ -1,0 +1,36 @@
+{%- assign sub_folders = "" -%}
+{%- assign sorted_docs = site.documents | sort: "path" %}
+
+
+<ul style="padding-left: 20px; margin: 0;">
+{%- for document in sorted_docs -%}
+  {%- if document.path contains include.prefix -%}
+
+    {%- assign path = document.path | remove_first: include.prefix -%}
+    {%- if path contains "/" -%}
+      {%- assign path_parts = path | split: "/" -%}
+      {%- capture sub_prefix %}{{ include.prefix }}{{ path_parts[0] }}/{% endcapture -%}
+      {%- capture sub_folders %}{{ sub_folders }};{{ path_parts[0] }}={{ sub_prefix }}{% endcapture -%}
+
+    {%- else %}
+      <li style="padding: 10px 0;"><a href="{{ document.url }}">{{ document.title }}</a><br></li>
+
+    {%- endif -%}
+
+  {%- endif -%}
+{%- endfor %}
+</ul>
+
+
+{%- if sub_folders -%}
+  {%- assign sub_folders = sub_folders | remove_first: ";" | split: ";" | uniq -%}
+  {%- for folder in sub_folders -%}
+    {%- assign split = folder | split: "=" -%}
+    {%- assign name = split | first -%}
+    {%- assign prefix = split | last %}
+    {% include accordion/begin button=name %}
+    {% include document/folder prefix=prefix %}
+    {% include accordion/end %}
+  {%- endfor -%}
+
+{%- endif -%}

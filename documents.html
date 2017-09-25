@@ -1,8 +1,27 @@
 ---
 permalink: /documents/
+empty_array: []
 ---
+{% include document/folder prefix="_documents/" %}
+
+
+{% comment %}
+{% assign doc_paths = page.empty_array %}
+
+{% for document in site.documents %}
+  {% assign path = document.path | remove_first: "_documents/" | split: "/" %}
+  {% assign doc_tree[0].name = "joe" %}
+  <br>
+{% endfor %}
+
+{{ doc_tree[0].name }}
+
+
+
+
 <ul>
   {% for document in site.documents %}
     <li><a href="{{ document.url }}"><h6>{{ document.title }}</h6>{{ document.path | remove_first: "_resource_docs/" | remove: ".md" }}</a></li>
   {% endfor %}
 </ul>
+{% endcomment %}
