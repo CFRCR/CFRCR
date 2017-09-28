@@ -2,7 +2,7 @@
 {%- assign sorted_docs = site.documents | sort: "path" %}
 
 
-<ul style="padding-left: 20px; margin: 0;">
+<div class="mdl-grid" style="background-color: #eee; box-shadow: inset 0px 0px 5px rgba(0,0,0,0.15);">
 {%- for document in sorted_docs -%}
   {%- if document.path contains include.prefix -%}
 
@@ -13,13 +13,15 @@
       {%- capture sub_folders %}{{ sub_folders }};{{ path_parts[0] }}={{ sub_prefix }}{% endcapture -%}
 
     {%- else %}
-      <li style="padding: 10px 0;"><a href="{{ document.url }}">{{ document.title }}</a><br></li>
+      <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+        {% include resource_card document=document %}
+      </div>
 
     {%- endif -%}
 
   {%- endif -%}
-{%- endfor %}
-</ul>
+{%- endfor -%}
+</div>
 
 
 {%- if sub_folders -%}
