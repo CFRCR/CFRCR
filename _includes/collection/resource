@@ -1,7 +1,7 @@
 {%- assign type = include.resource.type -%}
-{%- if type == "collection" %}{% include collection/type/collection resource=include.resource -%}
-{%- elsif type == "document" %}{% include collection/type/document resource=include.resource -%}
+{%- if type == "document" %}{% include collection/type/document resource=include.resource -%}
 {%- elsif type == "term" %}{% include collection/type/term resource=include.resource -%}
 {%- elsif type == "youtube" %}{% include collection/type/youtube resource=include.resource -%}
 {%- elsif type == "custom" %}{% include collection/type/custom resource=include.resource -%}
+{%- elsif type == "external_resources" %}{% include collection/type/external_resources resource=include.resource -%}
 {%- else %}{% include error text="resource type not found" %}{% endif -%}

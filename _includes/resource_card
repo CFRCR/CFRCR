@@ -1,0 +1,77 @@
+{%- if include.collection -%}
+  {%- assign collection_path = "_collections/" | append: include.collection -%}
+  {%- assign found_collection = site.collections | where: "path", collection_path | first -%}
+  {%- if found_collection %}
+    {%- assign card_url = found_collection.url -%}
+    {%- if found_collection.icon -%}
+      {%- assign card_icon=found_collection.icon -%}
+    {%- else -%}
+      {%- if found_collection.layout == "collection_index" -%}
+        {%- assign card_icon="fa-folder" -%}
+      {%- else -%}
+        {%- assign card_icon="fa-list-ul" -%}
+      {%- endif -%}
+    {%- endif -%}
+    {%- assign card_title = found_collection.title -%}
+    {%- assign card_description = found_collection.description -%}
+  {%- else -%}
+    {%- include error text="Collection not found!" -%}
+  {%- endif -%}
+{%- elsif include.document -%}
+  {%- assign document_path = "_documents/" | append: include.document -%}
+  {%- assign found_document = site.documents | where: "path", document_path | first -%}
+  {%- if found_document -%}
+    {%- assign card_url = found_document.url -%}
+    {%- if found_document.icon -%}
+      {%- assign card_icon=found_document.icon -%}
+    {%- else -%}
+      {%- assign card_icon="fa-file-text" -%}
+    {%- endif -%}
+    {%- assign card_title = found_document.title -%}
+    {%- assign card_description = found_document.description -%}
+  {%- else -%}
+    {%- include error text="Document not found!" -%}
+  {%- endif -%}
+{%- elsif include.term -%}
+  {%- assign term_path = "_glossary/" | append: include.term -%}
+  {%- assign found_term = site.glossary | where: "path", term_path | first -%}
+  {%- if found_term -%}
+    {%- assign card_url = found_term.url -%}
+    {%- if found_term.icon -%}
+      {%- assign card_icon=found_term.icon -%}
+    {%- else -%}
+      {%- assign card_icon="fa-book" -%}
+    {%- endif -%}
+    {%- assign card_title = found_term.title -%}
+    {%- assign card_description = found_term.description -%}
+  {%- else -%}
+    {%- include error text="Term not found!" -%}
+  {%- endif -%}
+{%- elsif include.custom -%}
+  {%- assign card_icon = include.custom.icon -%}
+  {%- assign card_url = include.custom.url -%}
+  {%- assign card_title = include.custom.title -%}
+  {%- assign card_description = include.custom.description -%}
+{%- else -%}
+  {%- include error text="Resource type not found!" -%}
+{%- endif -%}
+
+<a href="{{ card_url }}" style="text-decoration: none;">
+  <div class="mdl-card mdl-shadow--3dp" style="width:100%; height: 100%;">
+      <div class="mdl-card__title" style="width: 100%; padding-bottom: 0; display: inline-block; text-align: center;">
+        <span class="fa-stack fa-lg fa-4x">
+          <i class="fa fa-circle fa-stack-2x" style="color: #333;"></i>
+          {% comment %}<i class="fa fa-folder fa-stack-1x fa-inverse"></i>{% endcomment %}
+          <i class="fa {{ card_icon }} fa-stack-1x fa-inverse"></i>
+        </span>
+      </div>
+      <div class="mdl-card__title">
+        <h1 class="mdl-card__title-text">{{ card_title }}</h1>
+      </div>
+      {%- if card_description %}
+        <div class="mdl-card__supporting-text" style="padding-top: 0;">
+          {{ card_description }}
+        </div>
+      {%- endif %}
+  </div>
+</a>

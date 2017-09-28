@@ -21,33 +21,9 @@ layout: base
   <main class="mdl-layout__content" style="background-color: #eee">
     <div class="mdl-grid">
       {% for collection in page.collections %}
-        {%- assign col_path = "_collections/" | append: collection -%}
-        {%- assign col = site.collections | where: "path", col_path | first -%}
-        {%- if col -%}
-          <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
-
-            <a href="{{ col.url }}" style="text-decoration: none;">
-            <div class="mdl-card mdl-shadow--3dp" style="width:100%; height: 100%;">
-              <div class="mdl-card__title" style="width: 100%; padding-bottom: 0; display: inline-block; text-align: center;">
-                <span class="fa-stack fa-lg fa-4x">
-                  <i class="fa fa-circle fa-stack-2x" style="color: #333;"></i>
-                  {% comment %}<i class="fa fa-folder fa-stack-1x fa-inverse"></i>{% endcomment %}
-                  <i class="fa {% if col.icon %}{{ col.icon }}{% else %}{% if col.layout == "collection_index" %}fa-folder{% else %}fa-book{% endif %}{% endif %} fa-stack-1x fa-inverse"></i>
-                </span>
-              </div>
-              <div class="mdl-card__title">
-                <h1 class="mdl-card__title-text">{{ col.title }}</h1>
-              </div>
-              {% if col.description %}
-                <div class="mdl-card__supporting-text" style="padding-top: 0;">
-                  {{ col.description }}
-                </div>
-              {% endif %}
-            </div>
-            </a>
-
-          </div>
-        {% endif %}
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+          {% include resource_card collection=collection %}
+        </div>
       {% endfor %}
 
     </div>

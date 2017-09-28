@@ -18,16 +18,45 @@ resources:
   type: document
   path: git/egit/cloning.md
 -
-  title: Video!!!
+  title: Video Side Panel
   type: youtube
   id: EMiNmJW7enI
   companion:
     title: Video Companion Resource
     type: custom
 -
-  title: Collectionception
-  type: collection
-  path: index.md
+  title: Video By Itself
+  type: youtube
+  id: EMiNmJW7enI
+-
+  title: External Resources Side Panel
+  type: external_resources
+  resources:
+    -
+      collection: index.md
+    -
+      document: git/cli/cloning.md
+    -
+      term: java.md
+  companion:
+    title: External Resources
+    type: custom
+-
+  title: External Resources By Themselves
+  type: external_resources
+  resources:
+    -
+      collection: index.md
+    -
+      document: git/cli/cloning.md
+    -
+      term: java.md
+    -
+      custom:
+        url: "https://www.youtube.com/watch?v=EMiNmJW7enI"
+        icon: fa-youtube-play
+        title: Game Animation
+        description: "Learn how the 2017 FRC game, Steamworks, is played!"
 -
   title: Non-existant type
   type: none
@@ -58,3 +87,7 @@ This is how you would add custom resources to the thing. You know, the thing sto
 
 {% include collection/custom_begin title="Video Companion Resource" %}
 You can specify any type of resource to be a companion to a video. This one is custom but it could be anything!
+
+
+{% include collection/custom_begin title="External Resources" %}
+You can specify any type of resource to be a companion to external resources. This one is custom but it could be anything!

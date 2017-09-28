@@ -1,0 +1,50 @@
+{% unless include.resource.companion %}
+  {%- capture content -%}
+    <div class="mdl-grid" style="background-color: #eee; box-shadow: inset 0px 0px 5px rgba(0,0,0,0.15);">
+      {% for sub_resource in include.resource.resources %}
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+          {% if sub_resource.collection %}
+            {% include resource_card collection=sub_resource.collection %}
+          {% elsif sub_resource.document %}
+            {% include resource_card document=sub_resource.document %}
+          {% elsif sub_resource.term %}
+            {% include resource_card term=sub_resource.term %}
+          {% elsif sub_resource.custom %}
+            {% include resource_card custom=sub_resource.custom %}
+          {% else %}
+            {% include error text="external type not found" %}
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  {%- endcapture -%}
+  {%- include collection/type/default title=include.resource.title content=content -%}
+{% else %}
+  <div class="mdl-grid mdl-grid--no-spacing">
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+      {% include collection/resource resource=include.resource.companion %}
+    </div>
+    <div class="mdl-cell mdl-cell--6-col mdl-cell--8-col-tablet">
+      {%- capture content -%}
+        <div class="mdl-grid" style="background-color: #eee; box-shadow: inset 0px 0px 5px rgba(0,0,0,0.15);">
+          {% for sub_resource in include.resource.resources %}
+            <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+              {% if sub_resource.collection %}
+                {% include resource_card collection=sub_resource.collection %}
+              {% elsif sub_resource.document %}
+                {% include resource_card document=sub_resource.document %}
+              {% elsif sub_resource.term %}
+                {% include resource_card term=sub_resource.term %}
+              {% elsif sub_resource.custom %}
+                {% include resource_card custom=sub_resource.custom %}
+              {% else %}
+                {% include error text="external type not found" %}
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+      {%- endcapture -%}
+      {%- include collection/type/default content=content -%}
+    </div>
+  </div>
+{% endunless %}
