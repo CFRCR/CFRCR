@@ -22,7 +22,7 @@ layout: base
     <div class="mdl-grid">
       {% for collection in page.collections %}
         <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
-          {% include resource_card collection=collection %}
+          {% include resource_card collection-path=collection %}
         </div>
       {% endfor %}
 

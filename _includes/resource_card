@@ -1,5 +1,5 @@
-{%- if include.collection -%}
-  {%- assign collection_path = "_collections/" | append: include.collection -%}
+{%- if include.collection-path -%}
+  {%- assign collection_path = "_collections/" | append: include.collection-path -%}
   {%- assign found_collection = site.collections | where: "path", collection_path | first -%}
   {%- if found_collection %}
     {%- assign card_url = found_collection.url -%}
@@ -17,8 +17,27 @@
   {%- else -%}
     {%- include error text="Collection not found!" -%}
   {%- endif -%}
-{%- elsif include.document -%}
-  {%- assign document_path = "_documents/" | append: include.document -%}
+{%- elsif include.collection -%}
+  {%- assign found_collection = include.collection -%}
+  {%- if found_collection %}
+    {%- assign card_url = found_collection.url -%}
+    {%- if found_collection.icon -%}
+      {%- assign card_icon=found_collection.icon -%}
+    {%- else -%}
+      {%- if found_collection.layout == "collection_index" -%}
+        {%- assign card_icon="fa-folder" -%}
+      {%- else -%}
+        {%- assign card_icon="fa-list-ul" -%}
+      {%- endif -%}
+    {%- endif -%}
+    {%- assign card_title = found_collection.title -%}
+    {%- assign card_description = found_collection.description -%}
+  {%- else -%}
+    {%- include error text="Collection not found!" -%}
+  {%- endif -%}
+
+{%- elsif include.document-path -%}
+  {%- assign document_path = "_documents/" | append: include.document-path -%}
   {%- assign found_document = site.documents | where: "path", document_path | first -%}
   {%- if found_document -%}
     {%- assign card_url = found_document.url -%}
@@ -32,8 +51,23 @@
   {%- else -%}
     {%- include error text="Document not found!" -%}
   {%- endif -%}
-{%- elsif include.term -%}
-  {%- assign term_path = "_glossary/" | append: include.term -%}
+{%- elsif include.document -%}
+  {%- assign found_document = include.document -%}
+  {%- if found_document -%}
+    {%- assign card_url = found_document.url -%}
+    {%- if found_document.icon -%}
+      {%- assign card_icon=found_document.icon -%}
+    {%- else -%}
+      {%- assign card_icon="fa-file-text" -%}
+    {%- endif -%}
+    {%- assign card_title = found_document.title -%}
+    {%- assign card_description = found_document.description -%}
+  {%- else -%}
+    {%- include error text="Document not found!" -%}
+  {%- endif -%}
+
+{%- elsif include.term-path -%}
+  {%- assign term_path = "_glossary/" | append: include.term-path -%}
   {%- assign found_term = site.glossary | where: "path", term_path | first -%}
   {%- if found_term -%}
     {%- assign card_url = found_term.url -%}
@@ -47,6 +81,21 @@
   {%- else -%}
     {%- include error text="Term not found!" -%}
   {%- endif -%}
+{%- elsif include.term -%}
+  {%- assign found_term = include.term -%}
+  {%- if found_term -%}
+    {%- assign card_url = found_term.url -%}
+    {%- if found_term.icon -%}
+      {%- assign card_icon=found_term.icon -%}
+    {%- else -%}
+      {%- assign card_icon="fa-book" -%}
+    {%- endif -%}
+    {%- assign card_title = found_term.title -%}
+    {%- assign card_description = found_term.description -%}
+  {%- else -%}
+    {%- include error text="Term not found!" -%}
+  {%- endif -%}
+
 {%- elsif include.custom -%}
   {%- assign card_icon = include.custom.icon -%}
   {%- assign card_url = include.custom.url -%}
@@ -55,6 +104,8 @@
 {%- else -%}
   {%- include error text="Resource type not found!" -%}
 {%- endif -%}
+
+
 
 <a href="{{ card_url }}" style="text-decoration: none;">
   <div class="mdl-card mdl-shadow--3dp" style="width:100%; height: 100%;">

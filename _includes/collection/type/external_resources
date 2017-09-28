@@ -4,11 +4,11 @@
       {% for sub_resource in include.resource.resources %}
         <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
           {% if sub_resource.collection %}
-            {% include resource_card collection=sub_resource.collection %}
+            {% include resource_card collection-path=sub_resource.collection %}
           {% elsif sub_resource.document %}
-            {% include resource_card document=sub_resource.document %}
+            {% include resource_card document-path=sub_resource.document %}
           {% elsif sub_resource.term %}
-            {% include resource_card term=sub_resource.term %}
+            {% include resource_card term-path=sub_resource.term %}
           {% elsif sub_resource.custom %}
             {% include resource_card custom=sub_resource.custom %}
           {% else %}
@@ -30,11 +30,11 @@
           {% for sub_resource in include.resource.resources %}
             <div class="mdl-cell mdl-cell--6-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
               {% if sub_resource.collection %}
-                {% include resource_card collection=sub_resource.collection %}
+                {% include resource_card collection-path=sub_resource.collection %}
               {% elsif sub_resource.document %}
-                {% include resource_card document=sub_resource.document %}
+                {% include resource_card document-path=sub_resource.document %}
               {% elsif sub_resource.term %}
-                {% include resource_card term=sub_resource.term %}
+                {% include resource_card term-path=sub_resource.term %}
               {% elsif sub_resource.custom %}
                 {% include resource_card custom=sub_resource.custom %}
               {% else %}
