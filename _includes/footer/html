@@ -1,0 +1,12 @@
+<footer id="footer" class="mdl-mini-footer">
+  <div class="mdl-mini-footer__left-section">
+    <div class="mdl-logo">
+        View this page on <a style="color: #afafaf;" href="https://github.com/CFRCR/CFRCR/blob/master/{{ page.path }}">GitHub</a>!
+    </div>
+  </div>
+  <div class="mdl-mini-footer__right-section">
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+      See a problem?
+    </button>
+  </div>
+</footer>

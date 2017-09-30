@@ -19,6 +19,7 @@
     {% include site_css/general %}
     {% include site_css/syntax %}
     {% include header/css %}
+    {% include footer/css %}
     {% include collection/css %}
     {% include accordion/css %}
   </style>
@@ -36,7 +37,7 @@
 
     <main class="mdl-layout__content">
       {{ content }}
-      {% comment %}{% include footer/html %}{% endcomment %}
+      {% include footer/html %}
     </main>
 
   </div>

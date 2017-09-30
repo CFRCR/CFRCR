@@ -12,11 +12,7 @@ resources:
 -
   title: "Cloning: CLI"
   type: document
-  path: git/cli/cloning.md
--
-  title: "Cloning: EGit"
-  type: document
-  path: git/egit/cloning.md
+  path: example/2/2.2/example_doc.md
 -
   title: Video Side Panel
   type: youtube
