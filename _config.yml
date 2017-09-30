@@ -53,6 +53,7 @@ defaults: #Default values for page variables
       path: ""
       type: documents
     values:
+      layout: document
       permalink: /documents/:path/
   - #Terms in the glossary
     scope:

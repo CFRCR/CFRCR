@@ -11,21 +11,27 @@ permalink: /glossary/
   </div>
 
   <div class="mdl-tabs__panel is-active" id="all">
-    <ul>
+    <div class="mdl-grid" style="background-color: #f5f5f5; box-shadow: inset 0px 0px 5px rgba(0,0,0,0.15);">
       {%- for term in site.glossary -%}
-        <li><a href="{{ term.url }}">{{ term.name }}</a></li>
+        <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+          {% include resource_card term=term %}
+        </div>
       {%- endfor -%}
-    </ul>
+    </div>
   </div>
 
   {%- for letter in alphabet -%}
     <div class="mdl-tabs__panel" id="{{ letter }}">
-      <ul>
+      <div class="mdl-grid" style="background-color: #f5f5f5; box-shadow: inset 0px 0px 5px rgba(0,0,0,0.15);">
         {%- for term in site.glossary -%}
           {%- assign first = term.name | downcase | slice: 0 -%}
-          {%- if first == letter %}<li><a href="{{ term.url }}">{{ term.name }}</a></li>{% endif -%}
+          {%- if first == letter -%}
+            <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
+              {% include resource_card term=term %}
+            </div>
+          {%- endif -%}
         {%- endfor -%}
-      </ul>
+      </div>
     </div>
   {%- endfor -%}
 </div>

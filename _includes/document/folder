@@ -2,7 +2,7 @@
 {%- assign sorted_docs = site.documents | sort: "path" %}
 
 
-<div class="mdl-grid" style="background-color: #eee; box-shadow: inset 0px 0px 5px rgba(0,0,0,0.15);">
+<div class="mdl-grid" style="background-color: #f5f5f5; box-shadow: inset 0px 0px 5px rgba(0,0,0,0.15);">
 {%- for document in sorted_docs -%}
   {%- if document.path contains include.prefix -%}
 
