@@ -5,16 +5,20 @@ layout: default
   <div class="mdl-grid" style="width: calc(100% - 16px); margin: 10px auto;">
     <div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
     <div class="mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--10-col" style="padding: 45px; border-radius: 2px;">
-      <h6 class="mdl-color-text--grey-500">
-        {%- assign doc_path_parts = page.path | split: "/" -%}
-        {%- assign doc_path_prefix = doc_path_parts | first | append: "/" -%}
-        {%- assign doc_path_suffix = doc_path_parts | last | prepend: "/"-%}
-        {%- assign partial_path_parts = page.path | remove_first: doc_path_prefix | remove: doc_path_suffix | split: "/" -%}
 
-        {%- for part in partial_path_parts -%}
-          {{- part }}{% unless forloop.last %} &gt; {% endunless -%}
-        {%- endfor -%}
-      </h6>
+      {%- assign doc_path_parts = page.path | split: "/" -%}
+      {%- assign doc_path_parts_size = doc_path_parts | size -%}
+      {%- if doc_path_parts_size > 2 -%}
+        <h6 class="mdl-color-text--grey-500">
+          {%- assign doc_path_prefix = doc_path_parts | first | append: "/" -%}
+          {%- assign doc_path_suffix = doc_path_parts | last | prepend: "/"-%}
+          {%- assign partial_path_parts = page.path | remove_first: doc_path_prefix | remove: doc_path_suffix | split: "/" -%}
+
+          {%- for part in partial_path_parts -%}
+            {{- part }}{% unless forloop.last %} &gt; {% endunless -%}
+          {%- endfor -%}
+        </h6>
+      {%- endif -%}
       <h1>{{ page.title }}</h1>
       {{ content }}
     </div>
