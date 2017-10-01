@@ -8,3 +8,7 @@ collections:
   - "git/index.md"
 permalink: /collections/
 ---
+The high level index of collections on CFRCR.
+- "cfrcr/index.md"
+- "programming/index.md"
+- "git/index.md"
