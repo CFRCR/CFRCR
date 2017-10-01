@@ -30,7 +30,8 @@
     {%- assign split = folder | split: "=" -%}
     {%- assign name = split | first -%}
     {%- assign prefix = split | last %}
-    {% include accordion/begin button=name %}
+    {%- assign id = prefix | slugify %}
+    {% include accordion/begin button=name id=id %}
     {% include document/folder prefix=prefix %}
     {% include accordion/end %}
   {%- endfor -%}

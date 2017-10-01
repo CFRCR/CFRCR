@@ -10,5 +10,10 @@ for (i = 0; i < acc.length; i++) {
     } else {
       panel.style.maxHeight = "100%";
     }
+    
+    if(this.classList.contains("active")) {
+      location.href = "#";
+      location.href = "#"+this.id;
+    }
   }
 }

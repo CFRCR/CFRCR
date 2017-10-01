@@ -1,4 +1,4 @@
-<button class="accordion">{{ include.button }}</button>
+<button class="accordion" {% if include.id %}id="{{ include.id }}"{% endif %}>{{ include.button }}</button>
 <div class="panel">
   {{ include.panel }}
 </div>
