@@ -2,7 +2,8 @@
 {%- if include.item.current_if_is -%}
   {% if page.url == include.item.current_if_is %} active{% endif %}
 {%- endif -%}
-{%- if include.item.current_if_contains -%}
-  {% if page.url contains include.item.current_if_contains %} active{% endif %}
+{%- if include.item.current_if_first -%}
+  {%- assign first = page.url | remove_first: "/" | split: "/" | first -%}
+  {% if first == include.item.current_if_first %} active{% endif %}
 {%- endif -%}
 " href="{{ include.item.url }}">{{ include.item.text }}</a>

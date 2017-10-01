@@ -17,15 +17,15 @@ main_menu:
   -
     text: Collections
     url: /collections/
-    current_if_contains: /collections/
+    current_if_first: collections
   -
     text: Documents
     url: /documents/
-    current_if_contains: /documents/
+    current_if_first: documents
   -
     text: Glossary
     url: /glossary/
-    current_if_contains: /glossary/ #The url of the page has to contain "/glossary/" for the Glossary link to be darkened
+    current_if_first: glossary #The url of the page has to contain "/glossary/" for the Glossary link to be darkened
 
 collections: #A list of all custom jekyll collections aand their variables
   collections: #Collections of different kinds of resources
