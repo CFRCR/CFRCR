@@ -2,3 +2,10 @@
 layout: document
 ---
 {{ content }}
+
+{%- if page.external -%}
+  <script>
+    window.location.replace("{{ page.external }}");
+  </script>
+  <a href="{{ page.external }}">Read more!</a>
+{%- endif -%}
