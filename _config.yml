@@ -68,12 +68,6 @@ plugins:
 algolia:
   application_id: 'XNTLRPVD7E'
   index_name:     'CFRCR'
-  settings:
-    attributesToIndex:
-      - title
-      - icon
-      - description
-      - collections
 
 
 

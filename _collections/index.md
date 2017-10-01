@@ -8,3 +8,4 @@ collections:
   - "git/index.md"
 permalink: /collections/
 ---
+this is an algolia test
