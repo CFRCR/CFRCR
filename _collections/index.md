@@ -8,4 +8,4 @@ collections:
   - "git/index.md"
 permalink: /collections/
 ---
-{% include collection/algolia %}
+{% include collection/algolia_content %}

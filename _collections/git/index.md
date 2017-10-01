@@ -5,3 +5,4 @@ icon: fa-git
 layout: collection_index
 permalink: /collections/git/
 ---
+{% include collection/algolia_content %}

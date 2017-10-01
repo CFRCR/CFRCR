@@ -5,3 +5,4 @@ icon: fa-terminal
 layout: collection_index
 permalink: /collections/programming/
 ---
+{% include collection/algolia_content %}

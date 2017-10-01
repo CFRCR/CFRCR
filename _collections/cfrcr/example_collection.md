@@ -61,6 +61,7 @@ resources:
   type: document
   path: ":()"
 ---
+{% include collection/algolia_content %}
 {% include collection/custom_begin title="Collection Specific Content" %}
 This is how you would add custom resources to the thing. You know, the thing stored in {% include term text="git" %}. Besides `liquid` includes, markdown (if the collection file ends with .md) works normally:
 - Item

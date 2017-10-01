@@ -6,3 +6,4 @@ collections:
   - "cfrcr/example_collection.md"
 permalink: /collections/cfrcr/
 ---
+{% include collection/algolia_content %}
