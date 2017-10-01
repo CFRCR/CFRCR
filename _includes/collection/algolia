@@ -1,4 +1,4 @@
-{{ page.title }}
-{{ page.description }}
-{{ page.resources }}
-{{ page.collections }}
+{{ page.title }}<br>
+{{ page.description }}<br>
+{{ page.resources | join: "<br>" }}<br>
+{{ page.collections | join: "<br>" }}<br>
