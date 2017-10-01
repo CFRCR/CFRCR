@@ -112,7 +112,6 @@
       <div class="mdl-card__title" style="width: 100%; padding-bottom: 0; display: inline-block; text-align: center;">
         <span class="fa-stack fa-lg fa-4x">
           <i class="fa fa-circle fa-stack-2x" style="color: #333;"></i>
-          {% comment %}<i class="fa fa-folder fa-stack-1x fa-inverse"></i>{% endcomment %}
           <i class="fa {{ card_icon }} fa-stack-1x fa-inverse"></i>
         </span>
       </div>
