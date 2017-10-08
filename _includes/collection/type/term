@@ -1,6 +1,13 @@
 {%- capture content -%}
-{%- assign term = site.glossary | where: "name", include.resource.term | first -%}
-{% unless term %}{% include error text="term not found" %}{% endunless %}
-{{- term.content -}}
+{%- assign term_path = "_term/" | append: include.resource.path -%}
+{%- assign term = site.glossary | where: "path", term_path | first -%}
+{%- if term -%}
+  {%- assign extension = term.path | split: "." | last -%}
+  {%- if extension == "md" -%}
+    {{- term.content | markdownify -}}
+  {%- else -%}
+    {{- term.content -}}
+  {%- endif -%}
+{%- else %}{% include error text="term not found" %}{% endif -%}
 {%- endcapture -%}
 {%- include collection/type/default title=include.resource.title content=content -%}
