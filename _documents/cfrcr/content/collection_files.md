@@ -63,7 +63,7 @@ resources:
 {% endraw %}{% endhighlight %}
 
 ## External resources
-If you just want to link to some resources outside of your collection use `type: external_resources` (this is handy for "Presequisites" or "See Also" sections). You then provide an array of the paths (minus their collection's prefix, e.g. "\_collections/") to collections, documents, or terms for which you want to display cards:
+If you just want to link to some resources outside of your collection use `type: external_resources` (this is handy for "Prerequisites" or "See Also" sections). You then provide an array of the paths (minus their collection's prefix, e.g. "\_collections/") to collections, documents, or terms for which you want to display cards:
 {% highlight yaml %}{% raw %}
 resources:
 -
