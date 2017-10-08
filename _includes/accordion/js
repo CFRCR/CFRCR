@@ -2,6 +2,7 @@ var acc = document.getElementsByClassName("accordion");
 var i;
 
 for (i = 0; i < acc.length; i++) {
+  acc[i].nextElementSibling.style.maxHeight = null;
   acc[i].onclick = function() {
     this.classList.toggle("active");
     var panel = this.nextElementSibling;
@@ -10,7 +11,7 @@ for (i = 0; i < acc.length; i++) {
     } else {
       panel.style.maxHeight = "100%";
     }
-    
+
     if(this.classList.contains("active")) {
       location.href = "#";
       location.href = "#"+this.id;

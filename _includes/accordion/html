@@ -1,4 +1,4 @@
 <button class="accordion" {% if include.id %}id="{{ include.id }}"{% endif %}>{{ include.button }}</button>
-<div class="panel">
+<div class="panel" style="max-height: 100%;">
   {{ include.panel }}
 </div>
