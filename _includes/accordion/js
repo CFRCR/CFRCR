@@ -3,6 +3,7 @@ var i;
 
 for (i = 0; i < acc.length; i++) {
   acc[i].nextElementSibling.style.maxHeight = null;
+
   acc[i].onclick = function() {
     this.classList.toggle("active");
     var panel = this.nextElementSibling;
@@ -15,6 +16,25 @@ for (i = 0; i < acc.length; i++) {
     if(this.classList.contains("active")) {
       location.href = "#";
       location.href = "#"+this.id;
+    }else {
+      var parentButton = this.parentNode.previousElementSibling;
+      if (parentButton.classList.contains("accordion")) {
+        location.href = "#";
+        location.href = "#"+parentButton.id;
+      }else {
+        location.href = "#";
+        history.replaceState({}, '', window.location.href.slice(0, -1));
+      }
     }
+  }
+
+  if(("#"+acc[i].id) == window.location.hash) {
+    var next = acc[i];
+    do {
+      next.classList.add("active");
+      next.nextElementSibling.style.maxHeight = "100%";
+      next = next.parentNode.previousElementSibling;
+    }
+    while(next.classList.contains("accordion"));
   }
 }

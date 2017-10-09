@@ -27,7 +27,7 @@ button.accordion.active:after {
     content: "\2212";
 }
 
-div.panel {
+div.accordion-panel {
     padding: 0 0 0 20px;
     background-color: white;
     max-height: 0;
