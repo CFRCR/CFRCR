@@ -1,4 +1,1 @@
-
-
-<h1 style="color: red;">ERROR{% if include.text %}: {{ include.text }}{% endif %}!</h1>
-
+<script>console.error("CFRCR BUILD ERROR{% if include.text %}: {{ include.text }}{% endif %}!");</script>

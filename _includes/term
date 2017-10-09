@@ -1,21 +1,3 @@
-{%- comment -%}
-{%- assign found = false -%}
-{%- for term in site.glossary -%}
-  {%- assign tname = term.name | downcase -%}
-  {%- assign iname = include.text | downcase -%}
-
-  {%- if tname == iname -%}
-    {%- assign found = true -%}
-    <a href="{{ term.url }}" title="{{ term.tooltip }}" style="font-weight:bold">
-      {{- include.text -}}
-    </a>
-  {%- endif -%}
-{%- endfor -%}
-
-{%- if found == false -%}{{- include.text -}}{%- endif -%}
-{%- endcomment -%}
-
-
 {%- assign found_term = "" -%}
 {{ found_term.title }}
 {%- unless include.path -%}
@@ -40,5 +22,5 @@
 {%- unless found_term == "" -%}
   <a href="{{ found_term.url }}" title="{{ found_term.description }}" style="font-weight:bold">{{- include.text -}}</a>
 {%- else -%}
-  {%- include error text="term not found" -%}
+  {{- include.text -}}{%- include error text="term not found" -%}
 {%- endunless -%}
