@@ -2,8 +2,6 @@
 title: Working With Collection Files
 description: How to add and edit collections in CFRCR.
 ---
-*NOTE: This document only covers information on standard collection files, see [this](../collection_index_files/) for collection indices.*
-
 Collections in CFRCR are simply files in the `_collections` folder. Like most content files, it's recommended to write them in {% include term text="markdown" %} (`.md` extension). They can be organized into folders arbitrarily.
 
 The {% include term text="front matter" %} for a collection encodes basically all of the page, besides any custom content. The basics include a `title` and `description` attribute. From there, the content of the page is given by the `resources` attribute, an array of the different resources you want in your collection. Each of these needs a `type` attribute that tells the site what your resource should look like and a `title` attribute that is at a minimum used in the side panel.
