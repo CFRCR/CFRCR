@@ -19,6 +19,10 @@ resources:
         title: Game Animation
         description: "Learn how the 2017 FRC game, Steamworks, is played!"
 -
+  title: Collection Files
+  type: document
+  path: cfrcr/content/collection_files.md
+-
   title: Collection Specific Content
   type: custom
 -
