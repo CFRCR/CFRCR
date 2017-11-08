@@ -4,7 +4,7 @@
 {%- if doc -%}
   {%- assign extension = doc.path | split: "." | last -%}
   {%- if extension == "md" -%}
-    {{- doc.output -}}
+    {{- doc.content -}}
   {%- else -%}
     {{- doc.content -}}
   {%- endif -%}
