@@ -1,12 +1,11 @@
 {%- capture content -%}
-{%- assign term_path = "_term/" | append: include.resource.path -%}
+{%- assign term_path = "_glossary/" | append: include.resource.path -%}
 {%- assign term = site.glossary | where: "path", term_path | first -%}
 {%- if term -%}
-  {%- assign extension = term.path | split: "." | last -%}
-  {%- if extension == "md" -%}
-    {{- term.content | markdownify -}}
-  {%- else -%}
-    {{- term.content -}}
+  {{- term.output -}}
+  {%- if term.external %}
+  
+    <a href="{{ term.external }}">Read more!</a>
   {%- endif -%}
 {%- else %}{% include error text="term not found" %}{% endif -%}
 {%- endcapture -%}

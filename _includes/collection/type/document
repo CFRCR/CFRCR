@@ -2,12 +2,7 @@
 {%- assign doc_path = "_documents/" | append: include.resource.path -%}
 {%- assign doc = site.documents | where: "path", doc_path | first -%}
 {%- if doc -%}
-  {%- assign extension = doc.path | split: "." | last -%}
-  {%- if extension == "md" -%}
-    {{- doc.content -}}
-  {%- else -%}
-    {{- doc.content -}}
-  {%- endif -%}
+  {{- doc.output -}}
 {%- else %}{% include error text="document not found" %}{% endif -%}
 {%- endcapture -%}
 {%- include collection/type/default title=include.resource.title content=content -%}
