@@ -1,0 +1,4 @@
+{%- capture content -%}
+{% include clone_instructions url = include.resource.url %}
+{%- endcapture -%}
+{%- include collection/type/default title=include.resource.title content=content -%}

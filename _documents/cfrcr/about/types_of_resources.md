@@ -11,9 +11,10 @@ Documents are single pages of infomation, organized by folder, accessible [here]
 Terms are explanations of words or phrases, found in the [glossary](/glossary/). Terms in the glossary are organized by name rather than the title displayed. For example, "Jekyll Front Matter" is found under "F". If you are having trouble finding a term, there, you can always search for it in the top left. You can also often see terms in other CFRCR content like this: {% include term text="Git" path="git/git.md" %}. You can either mouse over them for a quick description or click through for the full explanation.
 
 ## Collections
-Collections organize and combine resources both on and off of CFRCR. Besides standard collections, there are also __collection indices__.
+Collections organize and combine resources both on and off of CFRCR. Besides standard collections, there are also collection indices.
 
 ### Standard Collections
-Standard collections organize all types of resources into a linear progression. These are used for everything from tutorials 
+Standard collections organize all types of resources into a linear progression. These can be used for training programs, guides, or anything else.
 
 ### Collection Indices
+Collection indices are collections of collections. Generally, they exist to organize standard collections into a generally (though not necessarily) hierarchical structure. [This](/collections/) is the highest level collection index. 

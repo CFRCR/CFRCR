@@ -1,0 +1,18 @@
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+  <div class="mdl-tabs__tab-bar">
+      <a href="#github_desktop-panel" class="mdl-tabs__tab is-active">GitHub Desktop</a>
+      <a href="#cli-panel" class="mdl-tabs__tab">Command Line</a>
+  </div>
+
+  <div class="mdl-tabs__panel is-active" id="github_desktop-panel">
+    I don't have github desktop, feel free to add this!
+  </div>
+  <div class="mdl-tabs__panel" id="cli-panel">
+    {%- capture markdown -%}
+1. Open your command line interface. This is usually something like `CTRL-ALT-T` or `Start -> windows things that David doesn't know`.
+2. Navigate to where you want to clone the repo. Generally, `cd ~/git` or `again, windows things`.
+3. Clone the repo: `git clone {{ include.url }}`
+    {%- endcapture -%}
+    {{ markdown | markdownify }}
+  </div>
+</div>
