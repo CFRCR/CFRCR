@@ -4,34 +4,102 @@ layout: base
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer
             mdl-layout--fixed-header">
   <header id="collection_nav" class="mdl-layout__header">
-    <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">{{ page.title }}</span>
-      {% comment %}
+    <div class="mdl-layout__header-row" style="height: auto; min-height: 64px;">
+      <span class="mdl-layout-title" style="max-width: calc( 100% - 110px ); padding: 15px 0;">{{ page.title }}<div id="tab_title" style="font-size: 16px; color: rgb(66, 66, 66); padding-top: 7.5px;"></div></span>
+
       <div class="mdl-layout-spacer"></div>
-      These are for navigation if we hide the divs:
-      <button id="back_button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+
+      <button id="back_button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" disabled>
         <i class="material-icons">arrow_back</i>
       </button>
-      <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+      <button id="forward_button" class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored" disabled>
         <i class="material-icons">arrow_forward</i>
       </button>
-      {% endcomment %}
+
     </div>
   </header>
   <div class="mdl-layout__drawer">
     <nav class="mdl-navigation">
       {%- for resource in page.resources -%}
-        <a class="mdl-navigation__link" href="#{{ resource.title | slugify}}">{{ resource.title }}</a>
+        <a class="mdl-navigation__link drawer_tab" id="#tab-{{ resource.title | slugify}}" href="#tab-{{ resource.title | slugify}}">{{ resource.title }}</a>
       {%- endfor -%}
     </nav>
   </div>
   <main class="mdl-layout__content">
     {%- for resource in page.resources -%}
-      <div id="{{ resource.title | slugify}}" style="max-width: 100%;">
+      <div id="tab-{{ resource.title | slugify}}" class="resource_container" style="max-width: 100%;">
         {%- include collection/resource resource=resource -%}
       </div>
-      {%- if forloop.last != true %}<hr>{% endif -%}
+      {%- if forloop.last != true %}<hr class="resource_break">{% endif -%}
     {%- endfor -%}
+
+    <script>
+      //Hide horizontal lines used when javascript is disabled
+      var breaks = document.getElementsByClassName("resource_break");
+      for(var i = 0; i < breaks.length; i++) {
+        breaks[i].style.display = "none";
+      }
+
+      //Set first container as selected if none selected
+      var containers = document.getElementsByClassName("resource_container");
+      if(!location.href.includes("#")) {
+        location.href = "#" + containers[0].id;
+      }
+
+      //Set up nav tabs
+      var drawer_tabs = document.getElementsByClassName("drawer_tab");
+      for(var i = 0; i < drawer_tabs.length; i++) {
+        drawer_tabs[i].onclick = function() {
+          location.href = this.id;
+          updateDisplay();
+        }
+      }
+
+      //Set up nav buttons
+      function increment(forward) {
+        var containers = document.getElementsByClassName("resource_container");
+        for(var i = 0; i < containers.length; i++) {
+          if(location.href.endsWith(containers[i].id)){
+            if(forward) {location.href = "#" + containers[i+1].id;}
+            if(!forward) {location.href = "#" + containers[i-1].id;}
+            updateDisplay();
+            break;
+          }
+        }
+      }
+      document.getElementById("back_button").onclick = function(){increment(false);}
+      document.getElementById("forward_button").onclick = function(){increment(true);}
+
+      //Updated displayed containers based on URL
+      function updateDisplay() {
+        var back_button = document.getElementById("back_button");
+        var forward_button = document.getElementById("forward_button");
+
+        var containers = document.getElementsByClassName("resource_container");
+        for(var i = 0; i < containers.length; i++) {
+          if(!location.href.endsWith(containers[i].id)){
+            containers[i].style.display = "none";
+          }else {
+            containers[i].style.display = "block";
+            document.getElementById("tab_title").innerText = /*" - " + */document.getElementById("#" + containers[i].id).text;
+
+            if(i == 0) {
+              back_button.disabled = true;
+              forward_button.disabled = false;
+            }else if ( i == containers.length - 1 ) {
+              back_button.disabled = false;
+              forward_button.disabled = true;
+            }else {
+              back_button.disabled = false;
+              forward_button.disabled = false;
+            }
+          }
+        }
+      }
+
+      updateDisplay();
+    </script>
+
     {% include footer/html %}
   </main>
 </div>

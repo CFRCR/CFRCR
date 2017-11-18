@@ -2,6 +2,7 @@
 permalink: /glossary/
 ---
 {%- assign alphabet = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z" | split: "," -%}
+{% assign sorted_glossary = site.glossary | sort: "name" %}
 <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
   <div class="mdl-tabs__tab-bar" style="flex-wrap: wrap; height: auto;">
     <a href="#all" class="mdl-tabs__tab is-active" style="padding: 0 12px;">ALL</a>
@@ -12,7 +13,7 @@ permalink: /glossary/
 
   <div class="mdl-tabs__panel is-active" id="all">
     <div class="mdl-grid" style="background-color: #f5f5f5; box-shadow: inset 0px 0px 5px rgba(0,0,0,0.15);">
-      {%- for term in site.glossary -%}
+      {%- for term in sorted_glossary -%}
         <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
           {% include resource_card term=term %}
         </div>
@@ -23,7 +24,7 @@ permalink: /glossary/
   {%- for letter in alphabet -%}
     <div class="mdl-tabs__panel" id="{{ letter }}">
       <div class="mdl-grid" style="background-color: #f5f5f5; box-shadow: inset 0px 0px 5px rgba(0,0,0,0.15);">
-        {%- for term in site.glossary -%}
+        {%- for term in sorted_glossary -%}
           {%- assign first = term.name | downcase | slice: 0 -%}
           {%- if first == letter -%}
             <div class="mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--4-col-phone">
@@ -35,4 +36,3 @@ permalink: /glossary/
     </div>
   {%- endfor -%}
 </div>
-
