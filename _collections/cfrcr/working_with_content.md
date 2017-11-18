@@ -3,13 +3,13 @@ title: Working With CFRCR Content
 description: A collection of resources on making and editing content in CFRCR.
 resources:
 -
-  title: See Before
+  title: See First
   type: external_resources
   resources:
     -
       document: cfrcr/about/types_of_resources.md
     -
-      collection: dev enironment
+      collection: cfrcr/dev_environment_setup.md
 -
   title: Documents
   type: document

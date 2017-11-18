@@ -6,6 +6,8 @@ Collections in CFRCR are simply files in the `_collections` folder. Like most co
 
 The {% include term text="front matter" %} for a collection encodes basically all of the page, besides any custom content. The basics include a `title` and `description` attribute. From there, the content of the page is given by the `resources` attribute, an array of the different resources you want in your collection. Each of these needs a `type` attribute that tells the site what your resource should look like and a `title` attribute that is at a minimum used in the side panel.
 
+To make sure that your index is properly searchable, add `{% raw %}{% include collection/algolia_content %}{% endraw %}` to the beginning of the content of your collection.
+
 ## Custom Content
 Sometimes it doesn't make sense to have a resource separate from a collection, just use `type: custom`. From there, anything in the content of the collection (outside of the {% include term text="front matter" %}) between an {% include term text="include" %} marking the start of your custom resource and another custom resource's will be shown as your resource. Here's what part of your {% include term text="front matter" %} would look like:
 {% highlight yaml %}{% raw %}
